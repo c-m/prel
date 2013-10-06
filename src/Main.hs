@@ -30,7 +30,7 @@ evaluate xs = apply (separate xs) (getNumber xs)
 separate :: String -> [String]
 separate xs = 
 	   let 
-	   	lastEl = last (words $ getFunctions xs)
+	      lastEl = last (words $ getFunctions xs)
 	   in map init ( init (words $ getFunctions xs)) ++ [lastEl]
 
 getNumber :: String -> Int
