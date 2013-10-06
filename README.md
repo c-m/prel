@@ -12,4 +12,4 @@ Do `cabal install`.
 
 OBS
 =======
-You can run the file Main.hs using ghci ( :load Main.hs	*Main>main)
+You can run the file Main.hs using ghci ( `:load Main.hs	*Main>main` )
