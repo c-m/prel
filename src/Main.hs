@@ -1,4 +1,3 @@
-
 module Main where
 
 import Data.Char
@@ -30,17 +29,17 @@ evaluate xs = apply (separate xs) (getNumber xs)
 	
 separate :: String -> [String]
 separate xs = 
-				let 
-					lastEl = last (words $ getFunctions xs)
-				in map init ( init (words $ getFunctions xs))  ++ [lastEl]
+	   let 
+	   	lastEl = last (words $ getFunctions xs)
+	   in map init ( init (words $ getFunctions xs)) ++ [lastEl]
 
 getNumber :: String -> Int
 getNumber xs = read $ lines xs !! 0 :: Int
 	
 getFunctions :: String -> String
 getFunctions xs
-					| length (lines xs) == 1 = error "No functions in the file\n"
-					| otherwise = init $ tail $ lines xs !! 1
+	      | length (lines xs) == 1 = error "No functions in the file\n"
+	      | otherwise = init $ tail $ lines xs !! 1
 
 apply :: [String] -> Int -> [Int]
 apply [] _ = []
@@ -48,22 +47,22 @@ apply (x:xs) n = ( functions x n) : ( apply xs n)
 
 functions :: String -> Int -> Int
 functions x n
-	|	isPrefixOf "add_" x 				= n + (value x)
-	|	isPrefixOf "subtract_"       x		= n - (value x)
-	|	isPrefixOf "multiply_by_"  x		= n * (value x)
-	|	isPrefixOf "divide_by_"     x	= n `div` (value x)
-	|	otherwise                           	= error "something is spelled wrong in your file!"
+	|	isPrefixOf "add_"          x = n + (value x)
+	|	isPrefixOf "subtract_"     x = n - (value x)
+	|	isPrefixOf "multiply_by_"  x = n * (value x)
+	|	isPrefixOf "divide_by_"    x = n `div` (value x)
+	|	otherwise                    = error "something is spelled wrong in your file!"
 
 value :: String -> Int		
 value x
 	|	isSuffixOf "zero" 	x = 0
 	|	isSuffixOf "one" 	x = 1
-	|	isSuffixOf "two" 		x = 2
+	|	isSuffixOf "two" 	x = 2
 	|	isSuffixOf "three" 	x = 3
 	|	isSuffixOf "four" 	x = 4
 	|	isSuffixOf "five" 	x = 5
-	|	isSuffixOf "six" 		x = 6
+	|	isSuffixOf "six" 	x = 6
 	|	isSuffixOf "seven" 	x = 7
 	|	isSuffixOf "eight" 	x = 8
 	|	isSuffixOf "nine" 	x = 9
-	|	otherwise 				   = error "this integer digit does not exist!"
+	|	otherwise 		  = error "this integer digit does not exist!"
