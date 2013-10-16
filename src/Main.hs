@@ -5,7 +5,7 @@ import Data.List
 import Control.Monad
 
 -- |This is the main function (the center of all that it was, it is and will be).
--- Given n and a set of functions, print the final result after aplying the functions
+-- Given n and a set of functions, print the final result after applying each function to n
 main :: IO ()
 main = do
 	putStrLn "Enter the input source: "
